@@ -12,7 +12,7 @@
       <p>Please correct the following errors in your submission:</p>
       <ul>
         <th:block th:each="error : ${errors}">
-          <li>${error}</li>
+          <li th:text="${error}">Error</li>
         </th:block>
       </ul>
     </th:block>
@@ -27,6 +27,9 @@
       <label for="emailAddress">Email Address:</label>
       <input type="text" name="emailAddress" th:value="${person.emailAddress}"/>
       <br/>
+      <!-- <label for="emailAddress">Company:</label>
+      <input type="text" name="company" th:value="${person.company}"/>
+      <br/> -->
       <label for="streetAddress">Street Address:</label>
       <input type="text" name="streetAddress" th:value="${person.streetAddress}"/>
       <br/>

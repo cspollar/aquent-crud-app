@@ -8,3 +8,14 @@ CREATE TABLE person (
     state varchar(2) NOT NULL,
     zip_code varchar(5) NOT NULL
 );
+
+CREATE TABLE company (
+    company_id integer IDENTITY,
+    company_name varchar(50) NOT NULL,
+    website_uri varchar(512) NOT NULL,
+    phone_number varchar(50) NOT NULL,
+    street_address varchar(50) NOT NULL,
+    city varchar(50) NOT NULL,
+    state varchar(2) NOT NULL,
+    zip_code varchar(5) NOT NULL
+);

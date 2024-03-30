@@ -1,0 +1,41 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Company Listing</title>
+  </head>
+  <body>
+    <h1>Company Listing</h1>
+    <p><a href="/company/create">Create New Company</a></p>
+    <th:block th:unless="${#lists.isEmpty(companies)}">
+      <table>
+        <thead>
+          <tr>
+            <th>Company Name</th>
+            <th>Website</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <th:block th:each="company : ${companies}">
+            <tr>
+              <td th:text="${company.companyName}">Company Name</td>
+              <td th:text="${company.websiteUri}">Website URI</td>
+              <td th:text="${company.phoneNumber}">Phone Number</td>
+              <td>
+                <a th:href="'/company/edit/' + ${company.companyId}">Edit Company</a>
+                <a th:href="'/company/delete/' + ${company.companyId}">Delete Company</a>
+              </td>
+            </tr>
+          </th:block>
+        </tbody>
+      </table>
+    </th:block>
+    <th:block th:if="${#lists.isEmpty(companies)}">
+      <p>No results found.</p>
+    </th:block>
+  </body>
+</html>
