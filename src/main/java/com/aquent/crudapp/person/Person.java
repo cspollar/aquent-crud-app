@@ -1,14 +1,27 @@
 package com.aquent.crudapp.person;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-/**
- * The person entity corresponding to the "person" table in the database.
- */
+import com.aquent.crudapp.client.Client;
+
+@Entity
 public class Person {
 
-    private Integer personId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     @NotNull
     @Size(min = 1, max = 50, message = "First name is required with maximum length of 50")
@@ -38,13 +51,7 @@ public class Person {
     @Size(min = 5, max = 5, message = "Zip code is required with length 5")
     private String zipCode;
 
-    public Integer getPersonId() {
-        return personId;
-    }
 
-    public void setPersonId(Integer personId) {
-        this.personId = personId;
-    }
 
     public String getFirstName() {
         return firstName;

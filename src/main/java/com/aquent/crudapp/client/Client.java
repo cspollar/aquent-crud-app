@@ -1,18 +1,34 @@
-package com.aquent.crudapp.company;
+package com.aquent.crudapp.client;
+
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-/**
- * The company entity corresponding to the "company" table in the database.
- */
-public class Company {
+import com.aquent.crudapp.person.Person;
 
-    private Integer companyId;
+@Entity
+public class Client {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    private Set<Person> contacts;
+
 
     @NotNull
-    @Size(min = 1, max = 50, message = "Company Name is required with maximum length of 50")
-    private String companyName;
+    @Size(min = 1, max = 50, message = "Client Name is required with maximum length of 50")
+    private String clientName;
 
     @NotNull
     @Size(min = 1, max = 50, message = "Website URI is required with maximum length of 512")
@@ -38,20 +54,13 @@ public class Company {
     @Size(min = 5, max = 5, message = "Zip code is required with length 5")
     private String zipCode;
 
-    public Integer getCompanyId() {
-        return companyId;
+
+    public String getClientName() {
+        return clientName;
     }
 
-    public void setCompanyId(Integer companyId) {
-        this.companyId = companyId;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 
     public String getWebsiteUri() {
@@ -101,4 +110,5 @@ public class Company {
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
+
 }
