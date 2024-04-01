@@ -6,6 +6,39 @@ This is a Maven project. It is a simple CRUD web application known to work with 
 
 Please implement the stories below to the best of your ability. Feel free to add features or technical improvements you feel are important or valuable as you see fit and have time. Be as creative as you want (even if that means using a completely different approach.) Feel free to correct our mistakes as well.
 
+# Getting Started
+
+## Requirements
+
+This repo used Java 17
+
+```bash
+brew install openjdk@17
+```
+
+## Run
+
+```bash
+./mvnw spring-boot:run
+```
+
+## Select API Examples
+
+```bash
+# View a client
+curl http://localhost:8081/api/clients/1
+
+# View a list of a client's contacts (people)
+curl http://localhost:8081/api/v1/clients/1/contacts
+
+
+# View a paginated list of people
+curl http://localhost:8081/api/v1/people
+
+# View a specific person
+curl http://localhost:8081/api/v1/people/1
+```
+
 ## Story #1
 
 Add ability to manage clients (companies):

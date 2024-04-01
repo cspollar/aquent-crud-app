@@ -19,7 +19,7 @@ import com.aquent.crudapp.person.Person;
 public class Client {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
@@ -54,6 +54,10 @@ public class Client {
     @Size(min = 5, max = 5, message = "Zip code is required with length 5")
     private String zipCode;
 
+
+    public long getClientId() {
+        return id;
+    }
 
     public String getClientName() {
         return clientName;

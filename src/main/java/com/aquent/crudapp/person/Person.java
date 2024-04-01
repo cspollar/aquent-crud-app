@@ -10,16 +10,20 @@ import jakarta.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.aquent.crudapp.client.Client;
 
 @Entity
 public class Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     @JoinColumn(name = "client_id")
     private Client client;
 
@@ -51,7 +55,17 @@ public class Person {
     @Size(min = 5, max = 5, message = "Zip code is required with length 5")
     private String zipCode;
 
+    public long getPersonId() {
+        return id;
+    }
 
+    public String getClientName() {
+        if (client != null) {
+            return client.getClientName();
+        } else {
+            return null;
+        }
+    }
 
     public String getFirstName() {
         return firstName;

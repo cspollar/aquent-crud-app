@@ -57,4 +57,14 @@ INSERT INTO person (
     'TX',
     '77005',
     1
+), (
+    3,
+    'Pat',
+    'Lopez',
+    'fake3@aquent.com',
+    '123 Any St.',
+    'Houston',
+    'TX',
+    '77004',
+    null
 );
