@@ -10,6 +10,17 @@
   padding: 60px;
 }
 
+@media screen and (max-width: 768px) {
+  .main-content {
+    padding: 40px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .main-content {
+    padding: 20px;
+  }
+}
 .mat-mdc-table {
   border: solid 1px darkgrey;
 }

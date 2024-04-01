@@ -16,6 +16,20 @@
   </mat-form-field>
 
   <mat-form-field>
+    <mat-label>Client</mat-label>
+    <mat-select formControlName="clientId">
+      @for (client of clients; track client) {
+      <mat-option [value]="client.clientId">{{ client.clientName }}</mat-option>
+      }
+    </mat-select>
+
+    @if (clientId?.invalid && (clientId?.dirty || clientId?.touched)){
+    <mat-error>State is invalid</mat-error>
+    }
+  </mat-form-field>
+
+
+  <mat-form-field>
     <mat-label>Email</mat-label>
     <input
       type="emailAddress"

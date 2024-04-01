@@ -1,5 +1,6 @@
 export class Client {
-    clientName: number | null;
+    clientName: string | null;
+    clientId: number | string;
     websiteUri: string;
     phoneNumber: string;
     streetAddress: string;
@@ -20,6 +21,7 @@ export class Client {
 
     constructor(person: Partial<Client> = {}) {
         this.clientName = person?.clientName || null;
+        this.clientId = person?.clientId || '';
         this.websiteUri = person?.websiteUri || '';
         this.phoneNumber = person?.phoneNumber || '';
         this.streetAddress = person?.streetAddress || '';

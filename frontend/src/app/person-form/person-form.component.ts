@@ -8,6 +8,8 @@ import { MatCardModule } from '@angular/material/card';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Person } from '../model/person';
 import { unitedStatesStates } from '../utils';
+import { Client } from '../model/client';
+
 
 @Component({
   selector: 'app-person-form',
@@ -22,6 +24,7 @@ export class PersonFormComponent {
 
   form: FormGroup = this.formBuilder.group({
     firstName: ['', Validators.required],
+    clientId: [''],
     lastName: ['', Validators.required],
     emailAddress: ['', [Validators.required, Validators.email]],
     streetAddress: ['', Validators.required],
@@ -30,10 +33,31 @@ export class PersonFormComponent {
     zipCode: ['', [Validators.minLength(5), Validators.maxLength(5), Validators.required]],
   });
 
+  loading = true;
+
+  clients: Client[] = [];
+
+
+  constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
+
+
   ngOnInit(): void {
+    this.fetchClients();
     if (this.initialData) {
       this.form.patchValue(this.initialData);
     }
+  }
+
+  fetchClients(): void {
+    this.loading = true;
+    this.http.get<any>('api/v1/clients').subscribe((data: any) => {
+      this.clients = data?._embedded?.clients;
+      this.loading = false;
+    });
+  }
+
+  get clientId() {
+    return this.form.get('clientId');
   }
 
   get firstName() {
@@ -66,7 +90,6 @@ export class PersonFormComponent {
 
   unitedStatesStates = unitedStatesStates;
 
-  constructor(private formBuilder: FormBuilder) { }
 
 
   onSubmit(): void {

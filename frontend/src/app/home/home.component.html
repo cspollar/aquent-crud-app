@@ -1,3 +1,43 @@
 <h1>Welcome Home</h1>
 
-<p>This would be a good place for some charts and/or graphs.</p>
+<mat-grid-list cols="4" rowHeight="100px" style="padding-bottom: 16px">
+  @for (tile of tiles; track tile) {
+  <mat-grid-tile
+    [colspan]="tile.cols"
+    [rowspan]="tile.rows"
+    [style.background]="tile.color"
+  ></mat-grid-tile>
+  }
+</mat-grid-list>
+
+<h2>This would be a good place for some charts and/or graphs.</h2>
+
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua. Consequat semper viverra nam
+  libero justo. Sit amet nulla facilisi morbi tempus iaculis. Proin libero nunc
+  consequat interdum varius sit amet mattis vulputate. In massa tempor nec
+  feugiat nisl. Ac feugiat sed lectus vestibulum mattis. Et malesuada fames ac
+  turpis egestas maecenas pharetra convallis. Nisl condimentum id venenatis a
+  condimentum vitae sapien.
+</p>
+<p>
+  Integer enim neque volutpat ac tincidunt. Elit ullamcorper dignissim cras
+  tincidunt lobortis feugiat. A pellentesque sit amet porttitor eget dolor morbi
+  non. At imperdiet dui accumsan sit amet. Tellus cras adipiscing enim eu turpis
+  egestas pretium aenean pharetra. Egestas diam in arcu cursus euismod quis
+  viverra nibh. Pellentesque pulvinar pellentesque habitant morbi tristique
+  senectus et. Egestas integer eget aliquet nibh praesent tristique magna. Non
+  consectetur a erat nam at. Blandit massa enim nec dui nunc mattis. Ut
+  tristique et egestas quis. Rhoncus est pellentesque elit ullamcorper dignissim
+  cras tincidunt lobortis feugiat.
+</p>
+<p>
+  Congue eu consequat ac felis donec et odio pellentesque. Velit egestas dui id
+  ornare arcu odio ut sem nulla. Cursus in hac habitasse platea dictumst.
+  Viverra accumsan in nisl nisi scelerisque eu. Pharetra vel turpis nunc eget
+  lorem dolor sed viverra ipsum. Quisque non tellus orci ac auctor augue mauris.
+  Congue nisi vitae suscipit tellus mauris. Risus sed vulputate odio ut enim
+  blandit volutpat maecenas. Rutrum tellus pellentesque eu tincidunt tortor
+  aliquam nulla facilisi. Vel eros donec ac odio tempor orci dapibus ultrices.
+</p>

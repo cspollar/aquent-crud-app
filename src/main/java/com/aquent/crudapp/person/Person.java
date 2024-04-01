@@ -67,6 +67,23 @@ public class Person {
         }
     }
 
+    public Long getClientId() {
+        if (client != null) {
+            return client.getClientId();
+        } else {
+            return null;
+        }
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        
+        this.client = client;
+    }
+
     public String getFirstName() {
         return firstName;
     }
