@@ -1,0 +1,12 @@
+<h1>Edit a Client</h1>
+<mat-card>
+  <mat-card-content>
+    @if (loading) {
+    <div>
+      <p>Loading...</p>
+    </div>
+    } @else {
+    <app-client-form [initialData]="initialData" (formSubmit)="onSubmit($event)"></app-client-form>
+    }
+  </mat-card-content>
+</mat-card>

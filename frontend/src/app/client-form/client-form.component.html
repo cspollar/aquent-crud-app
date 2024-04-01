@@ -1,0 +1,71 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+    <mat-form-field>
+      <mat-label>Client Name</mat-label>
+      <input matInput formControlName="clientName" required />
+      @if (clientName?.invalid && (clientName?.dirty || clientName?.touched)){
+      <mat-error>Name is required</mat-error>
+      }
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Website</mat-label>
+      <input matInput formControlName="websiteUri" required />
+      @if (websiteUri?.invalid && (websiteUri?.dirty || websiteUri?.touched)){
+      <mat-error>Website is required</mat-error>
+      }
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Phone</mat-label>
+      <input
+        matInput
+        formControlName="phoneNumber"
+        required
+      />
+      @if (phoneNumber?.invalid && (phoneNumber?.dirty ||
+      phoneNumber?.touched)){
+      <mat-error>Phone is required</mat-error>
+      }
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Street Address</mat-label>
+      <input matInput formControlName="streetAddress" required />
+      @if (streetAddress?.invalid && (streetAddress?.dirty ||
+      streetAddress?.touched)){
+      <mat-error>Street Address is required</mat-error>
+      }
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <input matInput formControlName="city" required />
+      @if (city?.invalid && (city?.dirty || city?.touched)){
+      <mat-error>City is required</mat-error>
+      }
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>State</mat-label>
+      <mat-select formControlName="state">
+        @for (state of unitedStatesStates; track state) {
+        <mat-option [value]="state.value">{{ state.viewValue }}</mat-option>
+        }
+      </mat-select>
+  
+      @if (state?.invalid && (state?.dirty || state?.touched)){
+      <mat-error>State is required</mat-error>
+      }
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Zip Code</mat-label>
+      <input matInput formControlName="zipCode" required />
+      @if (zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)){
+      <mat-error>5 digit Zip Code is required</mat-error>
+      }
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary">Submit</button>
+  </form>
+  

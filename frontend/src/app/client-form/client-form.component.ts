@@ -7,23 +7,23 @@ import { MatButton } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Person } from '../model/person';
-import { unitedStatesStates } from '../utils';
+import {unitedStatesStates} from '../utils'
 
 @Component({
-  selector: 'app-person-form',
+  selector: 'app-client-form',
   standalone: true,
   imports: [MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule, ReactiveFormsModule, MatButton, HttpClientModule],
-  templateUrl: './person-form.component.html',
-  styleUrl: './person-form.component.scss'
+  templateUrl: './client-form.component.html',
+  styleUrl: './client-form.component.scss'
 })
-export class PersonFormComponent {
+export class ClientFormComponent {
   @Input() initialData: any = Person;
   @Output() formSubmit: EventEmitter<any> = new EventEmitter<any>();
 
   form: FormGroup = this.formBuilder.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    emailAddress: ['', [Validators.required, Validators.email]],
+    clientName: ['', Validators.required],
+    websiteUri: ['', Validators.required],
+    phoneNumber: ['', [Validators.required]],
     streetAddress: ['', Validators.required],
     city: ['' , Validators.required],
     state: ['', [Validators.minLength(2), Validators.maxLength(2), Validators.required]],
@@ -36,16 +36,16 @@ export class PersonFormComponent {
     }
   }
 
-  get firstName() {
-    return this.form.get('firstName');
+  get clientName() {
+    return this.form.get('clientName');
   }
 
-  get lastName() {
-    return this.form.get('firstName');
+  get websiteUri() {
+    return this.form.get('websiteUri');
   }
 
-  get emailAddress() {
-    return this.form.get('emailAddress');
+  get phoneNumber() {
+    return this.form.get('phoneNumber');
   }
 
   get streetAddress() {
