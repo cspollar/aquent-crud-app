@@ -34,6 +34,9 @@ export class PeopleListComponent {
 
   delete(person: Person): void {
     if (confirm(`Are you sure you want to delete "${person.firstName} ${person.lastName}"?`)) {
+      // Optimistically delete to speed up the UI
+      this.people = this.people.filter(p => p !== person);
+
       this.http.delete(`${person._links.self.href}`).subscribe({
         next: () => {
           this.feedback = {type: 'success', message: `"${person.firstName} ${person.lastName}" was deleted`};
@@ -43,6 +46,8 @@ export class PeopleListComponent {
         },
         error: () => {
           this.feedback = {type: 'warning', message: `Unable to delete "${person.firstName} ${person.lastName}". Try again later.`};
+          // Add back the person if there's an error
+          this.people.push(person);
         }
       });
     }

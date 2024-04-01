@@ -1,0 +1,12 @@
+<h1>Edit a Person</h1>
+<mat-card>
+  <mat-card-content>
+    @if (loading) {
+    <div>
+      <p>Loading...</p>
+    </div>
+    } @else {
+    <app-person-form [initialData]="initialData" (formSubmit)="onSubmit($event)"></app-person-form>
+    }
+  </mat-card-content>
+</mat-card>

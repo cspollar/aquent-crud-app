@@ -1,5 +1,4 @@
 INSERT INTO client (
-    id,
     client_name,
     website_uri,
     phone_number,
@@ -8,7 +7,6 @@ INSERT INTO client (
     state,
     zip_code
 ) VALUES (
-    1,
     'My Company',
     'https://my-company.example.com',
     '555-555-5555',
@@ -17,7 +15,6 @@ INSERT INTO client (
     'NC',
     '28801'
 ), (
-    2,
     'My Other Company',
     'https://my-other-company.example.org',
     '555-555-5555',
@@ -28,7 +25,6 @@ INSERT INTO client (
 );
 
 INSERT INTO person (
-    id,
     first_name,
     last_name,
     email_address,
@@ -38,7 +34,6 @@ INSERT INTO person (
     zip_code,
     client_id
 ) VALUES (
-    1,
     'John',
     'Smith',
     'fake1@aquent.com',
@@ -48,7 +43,6 @@ INSERT INTO person (
     '28801',
     1
 ), (
-    2,
     'Jane',
     'Smith',
     'fake2@aquent.com',
@@ -58,7 +52,6 @@ INSERT INTO person (
     '77005',
     1
 ), (
-    3,
     'Pat',
     'Lopez',
     'fake3@aquent.com',

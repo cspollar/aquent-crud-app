@@ -34,6 +34,9 @@ export class ClientsListComponent {
 
   delete(client: Client): void {
     if (confirm(`Are you sure you want to delete "${client.clientName}"?`)) {
+      // Optimistically delete to speed up the UI
+      this.clients = this.clients.filter(c => c !== client);
+
       this.http.delete(`${client._links.self.href}`).subscribe({
         next: () => {
           this.feedback = {type: 'success', message: `"${client.clientName}" was deleted`};
@@ -43,6 +46,8 @@ export class ClientsListComponent {
         },
         error: () => {
           this.feedback = {type: 'warning', message: `Unable to delete "${client.clientName}". Try again later.`};
+          // On failure, add back the removed client
+          this.clients.push(client);
         }
       });
     }
